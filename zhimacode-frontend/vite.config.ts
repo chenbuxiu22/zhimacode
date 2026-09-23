@@ -13,9 +13,14 @@ export default defineConfig({
     },
   },
   server: {
+    // 绑定 IPv4，避免部分浏览器把 localhost 解析为 127.0.0.1 时连不上
+    host: '127.0.0.1',
+    port: 5173,
+    // 端口被占用时直接报错，避免静默换端口后访问到错误地址
+    strictPort: true,
     proxy: {
       '/api': {
-        target: 'http://localhost:8123',
+        target: 'http://127.0.0.1:8123',
         changeOrigin: true,
         secure: false,
       },
