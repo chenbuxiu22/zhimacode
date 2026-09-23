@@ -1,12 +1,11 @@
 # 线上配置文件模板
-# @author <a href="https://github.com/liyupi">程序员鱼皮</a>
-# @from <a href="https://codefather.cn">编程导航</a>
+# @author rzw
 spring:
   # mysql
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://<Your IP>:3306/yu_ai_code_mother
-    username: yu_ai_code_mother_user
+    url: jdbc:mysql://<Your IP>:3306/zhimacode
+    username: zhimacode_user
     password: 12345678
   # redis
   data:
@@ -21,14 +20,14 @@ langchain4j:
   open-ai:
     chat-model:
       base-url: https://api.deepseek.com
-      api-key: <your-api-key>
+      api-key: ${DEEPSEEK_API_KEY}
       model-name: deepseek-chat
       max-tokens: 8192
       log-requests: false
       log-responses: false
     streaming-chat-model:
       base-url: https://api.deepseek.com
-      api-key: <your-api-key>
+      api-key: ${DEEPSEEK_API_KEY}
       model-name: deepseek-chat
       max-tokens: 8192
       log-requests: false
@@ -36,7 +35,7 @@ langchain4j:
     # 推理 AI 模型配置（用于复杂的推理任务）
     reasoning-streaming-chat-model:
       base-url: https://api.deepseek.com
-      api-key: <your-api-key>
+      api-key: ${DEEPSEEK_API_KEY}
       model-name: deepseek-chat
       max-tokens: 8192
       temperature: 0.1
@@ -45,7 +44,7 @@ langchain4j:
     # 智能路由 AI 模型配置
     routing-chat-model:
       base-url: https://dashscope.aliyuncs.com/compatible-mode/v1
-      api-key: <your-api-key>
+      api-key: ${DASHSCOPE_API_KEY}
       model-name: qwen-turbo
       max-tokens: 100
       log-requests: false
@@ -54,17 +53,17 @@ langchain4j:
 cos:
   client:
     host: <your-custom-domain.com>
-    secretId: <your-secret-id>
-    secretKey: <your-secret-key>
+    secretId: ${COS_SECRET_ID:}
+    secretKey: ${COS_SECRET_KEY:}
     region: <your-region>
     bucket: <your-bucket-name>
 # 阿里云 DashScope 配置
 dashscope:
-  api-key: <your-api-key>
+  api-key: ${DASHSCOPE_API_KEY}
   image-model: wan2.2-t2i-flash
 # Pexels 图片搜索配置
 pexels:
-  api-key: <your-api-key>
+  api-key: ${PEXELS_API_KEY:}
 # 生产环境关闭日志
 mybatis-flex:
   configuration:
